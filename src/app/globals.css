@@ -3,10 +3,16 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --hh-bg:#fef6e4;
+  --hh-text:#1C1C1E;
+  --hh-accent:#FF7B72;
+  --hh-hover:#FF9B95;
+  --hh-muted:#7D7D7D;
+  --hh-border:#EAE8E6;
 }
 
 @theme inline {
-  --color-background: var(--background);
+  --color-background: var(--hh-bg);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
@@ -14,13 +20,40 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: var(--hh-bg);
     --foreground: #ededed;
   }
 }
 
 body {
-  background: var(--background);
+  background: var(--hh-bg);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* simple primitives */
+.btn-accent{
+  background: var(--hh-accent);
+  color:#fff;
+  border-radius: .5rem;
+  padding: .5rem 1rem;
+  font-weight: 500;
+}
+.btn-accent:hover{ background: var(--hh-hover); }
+
+.btn-outline{
+  border:1px solid var(--hh-border);
+  color: var(--hh-text);
+  border-radius: .5rem;
+  padding: .5rem 1rem;
+  font-weight: 500;
+}
+
+a.link-accent {
+  color: #3da9fc;
+  transition: color 0.2s ease;
+}
+
+a.link-accent:hover {
+  color: #1a7fd9; /* darker blue on hover */
 }
