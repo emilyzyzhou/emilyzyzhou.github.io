@@ -1,6 +1,7 @@
 // src/app/page.tsx  (About)
 import Link from 'next/link';
 import Image from 'next/image';
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 export default function AboutPage() {
   return (
@@ -34,10 +35,28 @@ export default function AboutPage() {
               <Link href="/projects" className="btn-outline">See Projects</Link>
             </div>
 
-            <div className="mt-6 text-sm" style={{color: 'var(--hh-muted)'}}>
-              <a href="https://github.com/emilyzyzhou" className="underline me-4">GitHub</a>
-              <a href="https://www.linkedin.com/in/emilyzyzhou/" className="underline">LinkedIn</a>
+            <div className="mt-6 flex gap-5">
+              <a
+                href="https://github.com/emilyzyzhou"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                className="hover:scale-110 transition-transform duration-200"
+              >
+                <FaGithub size={28} className="text-gray-700 hover:text-black" />
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/emilyzyzhou/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="hover:scale-110 transition-transform duration-200"
+              >
+                <FaLinkedin size={28} className="text-gray-700 hover:text-blue-600" />
+              </a>
             </div>
+
           </div>
 
           {/* Right: image */}
