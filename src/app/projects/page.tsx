@@ -229,7 +229,7 @@ export default function ProjectsPage() {
         <div className="grid gap-5">
           <Card
             title="University of Virginia"
-            subtitle="Bachelor's, Computer Science"
+            subtitle="Bachelor's, Computer Science with Minors in Data Science and French"
             org="University of Virginia"
             dates="May 2022 – May 2026"
           >
