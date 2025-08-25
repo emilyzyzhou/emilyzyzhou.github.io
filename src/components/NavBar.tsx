@@ -17,7 +17,7 @@ const links = [
   { href: '/', label: 'About' },
   { href: '/projects', label: 'Projects' },
   { href: '/resume', label: 'Resume' },
-  { href: '/interests', label: 'Interests' },
+  // { href: '/interests', label: 'Interests' },
 ];
 
 export default function NavBar() {

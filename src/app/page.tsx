@@ -1,14 +1,14 @@
 // src/app/page.tsx  (About)
 import Link from 'next/link';
 import Image from 'next/image';
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import SocialBar from '@/components/SocialBar';
 
 export default function AboutPage() {
   return (
     <main style={{ minHeight: 'calc(100dvh - 64px)' }}>
       <section className="max-w-6xl mx-auto px-4 py-14">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
-          {/* Left: text */}
+          {/* text */}
           <div>
             <h1
                 style={{
@@ -22,12 +22,14 @@ export default function AboutPage() {
               Emily Zhou
             </h1>
 
-            <p className="mt-4" style={{color: 'var(--hh-muted)', lineHeight: 1.7}}>
-              Hi there! I&#39;m a full-stack/AI developer who greatly enjoys learning new technologies while perfecting my craft.
-              Currently, I&#39;m studying CS at UVA and am graduating in May 2026 with a minor in Data Science and French!
+            <p className="mt-4" style={{color: 'var(--hh-muted)', lineHeight: 1.7, whiteSpace: 'pre-line' }}>
+              Hi there! I&#39;m a full-stack/AI developer who greatly enjoys learning new technologies while perfecting my craft. <br />
+              Currently, I&#39;m studying CS at UVA and am graduating in May 2026 with a minor in Data Science and French!<br />
               I have experience across both Python and Java full-stack development, databases like Postgres and MongoDB, the cloud + containerization such as AWS and Docker, and AI-driven apps
-              (LLM Slackbot serving 35k+ users). I am currently seeking roles where I can own features
-              end-to-end and collaborate closely with the product! Ask me about my interests too :D
+              (LLM Slackbot serving 35k+ users).<br />
+              <br />
+              I am currently seeking roles where I can own features end-to-end and collaborate closely with the product!<br />
+              Please contact me at emilyzyzhou@gmail.com!
             </p>
 
             <div className="mt-7 flex flex-wrap gap-3">
@@ -35,31 +37,11 @@ export default function AboutPage() {
               <Link href="/projects" className="btn-outline">See Projects</Link>
             </div>
 
-            <div className="mt-6 flex gap-5">
-              <a
-                href="https://github.com/emilyzyzhou"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub"
-                className="hover:scale-110 transition-transform duration-200"
-              >
-                <FaGithub size={28} className="text-gray-700 hover:text-black" />
-              </a>
-
-              <a
-                href="https://www.linkedin.com/in/emilyzyzhou/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-                className="hover:scale-110 transition-transform duration-200"
-              >
-                <FaLinkedin size={28} className="text-gray-700 hover:text-blue-600" />
-              </a>
-            </div>
+            <SocialBar />
 
           </div>
 
-          {/* Right: image */}
+          {/* pfp */}
             <div className="flex justify-center md:justify-end">
                 <Image
                     src="/aboutmepfp.png"
