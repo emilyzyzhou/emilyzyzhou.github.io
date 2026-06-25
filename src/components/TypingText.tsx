@@ -2,10 +2,10 @@
 import { useEffect, useState } from 'react';
 
 const ROLES = [
-  'Full-Stack Engineer',
-  'AI / ML Developer',
-  'Problem Solver',
-  'CS @ UVA · May \'26',
+  'Software Engineer',
+  'Full-Stack Developer',
+  'AI / ML Builder',
+  'Capital One · TDP',
 ];
 
 const DELAY_CHAR  = 65;   // ms per char

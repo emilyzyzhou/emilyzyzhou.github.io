@@ -7,8 +7,8 @@ import TiltCard from '@/components/TiltCard';
 const STATS = [
   { value: '3.89',  label: 'GPA'          },
   { value: '35k+',  label: 'Users Served'  },
-  { value: '5',     label: 'Internships'   },
-  { value: "'26",   label: 'Graduation'    },
+  { value: "'26",   label: 'UVA CS'        },
+  { value: 'C1',    label: 'Next Stop'     },
 ];
 
 const TECH = [
@@ -37,7 +37,7 @@ export default function Home() {
           {/* Left: text */}
           <div className="flex-1 min-w-0">
             <p className="section-label mb-5 fade-up" style={{ animationDelay: '0ms' }}>
-              Available · May 2026
+              UVA CS &apos;26 · Capital One SWE
             </p>
 
             <h1
@@ -67,10 +67,9 @@ export default function Home() {
               className="mt-5 leading-relaxed fade-up"
               style={{ color: 'var(--muted)', maxWidth: '50ch', animationDelay: '240ms', lineHeight: 1.75 }}
             >
-              CS student at UVA building full-stack products and AI-driven systems end-to-end.
-              Most recently shipped a LangGraph Slackbot serving 35k+ users and production
-              Spring Boot APIs at CACI. I care about owning features, moving fast, and making
-              things people actually use.
+              I studied CS at UVA and I&apos;m joining Capital One as a software engineer this fall.
+              I&apos;ve worked across full-stack and AI — from Spring Boot APIs at CACI to a LangGraph
+              Slackbot used by 35k+ people. I like building things that actually get used.
             </p>
 
             <div className="mt-7 flex flex-wrap gap-3 fade-up" style={{ animationDelay: '320ms' }}>
