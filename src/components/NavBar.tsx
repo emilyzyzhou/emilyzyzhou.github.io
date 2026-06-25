@@ -1,60 +1,90 @@
 'use client';
 import Link from 'next/link';
-import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
-// https://www.happyhues.co/palettes/17
-const COLORS = {
-  bg: '#f3d2c1',      // soft cream background
-  text: '#1C1C1E',    // dark charcoal
-  accent: '#FF7B72',  // coral accent
-  hover: '#8bd3dd',   // blue hover
-  muted: '#7D7D7D',   // neutral gray
-  border: '#EAE8E6',  // light divider border
-};
-
-const links = [
-  { href: '/', label: 'About' },
-  { href: '/projects', label: 'Projects' },
-  { href: '/resume', label: 'Resume' },
-  // { href: '/interests', label: 'Interests' },
+const LINKS = [
+  { href: '/',          label: 'About'      },
+  { href: '/projects',  label: 'Experience' },
+  { href: '/interests', label: 'Interests'  },
+  { href: '/resume',    label: 'Resume'     },
 ];
 
 export default function NavBar() {
-  const pathname = usePathname();
+  const path = usePathname();
   return (
     <header
-      className="sticky top-0 z-50 backdrop-blur border-b"
-      style={{ backgroundColor: COLORS.bg, borderColor: COLORS.border }}
+      className="sticky top-0 z-50 border-b"
+      style={{
+        background:    'var(--nav-bg)',
+        borderColor:   'var(--border)',
+        backdropFilter: 'blur(20px)',
+        WebkitBackdropFilter: 'blur(20px)',
+      }}
     >
-      <nav className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
-        {/* Logo with link to homepage */}
-        <Link href="/" className="flex items-center">
-          <Image
-            src="/logo.png"     // put your logo in /public/logo.png
-            alt="Emily Zhou logo"
-            width={45}         // adjust width as needed
-            height={30}         // adjust height as needed
-            priority
-            className="object-contain"
-          />
+      <nav className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
+
+        {/* wordmark */}
+        <Link
+          href="/"
+          style={{
+            fontFamily:  'var(--font-syne)',
+            fontWeight:  800,
+            fontSize:    '1.1rem',
+            letterSpacing: '0.02em',
+          }}
+          className="gradient-text"
+        >
+          EZ
         </Link>
 
-        {/* Navigation links */}
-        <div className="text-sm">
-          {links.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              style={{
-                color: pathname === l.href ? COLORS.accent : COLORS.muted,
-              }}
-              className="px-3 py-2 font-medium transition-colors"
-            >
-              {l.label}
-            </Link>
-          ))}
+        {/* links */}
+        <div className="flex items-center gap-1 text-sm">
+          {LINKS.map((l) => {
+            const active = path === l.href;
+            return (
+              <Link
+                key={l.href}
+                href={l.href}
+                className="px-3 py-1.5 rounded-lg font-medium transition-all duration-200"
+                style={{
+                  color:      active ? '#fff' : 'var(--muted)',
+                  background: active ? 'rgba(124,58,237,0.25)' : 'transparent',
+                  boxShadow:  active ? '0 0 12px rgba(124,58,237,0.2)' : 'none',
+                }}
+              >
+                {l.label}
+              </Link>
+            );
+          })}
         </div>
+
+        {/* social icons */}
+        <div className="flex items-center gap-3">
+          <a
+            href="https://github.com/emilyzyzhou"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+            style={{ color: 'var(--muted)', transition: 'color 0.2s' }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = '#fff')}
+            onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--muted)')}
+          >
+            <FaGithub size={19} />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/emilyzyzhou/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            style={{ color: 'var(--muted)', transition: 'color 0.2s' }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--cyan)')}
+            onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--muted)')}
+          >
+            <FaLinkedin size={19} />
+          </a>
+        </div>
+
       </nav>
     </header>
   );

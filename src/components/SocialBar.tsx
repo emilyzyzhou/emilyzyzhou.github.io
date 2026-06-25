@@ -1,5 +1,4 @@
 'use client';
-
 import { useState } from 'react';
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 
@@ -7,11 +6,9 @@ export default function SocialBar() {
   const [copied, setCopied] = useState(false);
   const email = 'emilyzyzhou@gmail.com';
 
-  const copyEmail = async () => {
-    try {
-      await navigator.clipboard.writeText(email);
-    } catch {
-      // fallback for older browsers
+  const copy = async () => {
+    try { await navigator.clipboard.writeText(email); }
+    catch {
       const ta = document.createElement('textarea');
       ta.value = email;
       document.body.appendChild(ta);
@@ -20,49 +17,53 @@ export default function SocialBar() {
       document.body.removeChild(ta);
     }
     setCopied(true);
-    setTimeout(() => setCopied(false), 1200);
+    setTimeout(() => setCopied(false), 1400);
   };
 
   return (
-    <div className="mt-6 flex items-center gap-5">
-      {/* GitHub */}
+    <div className="mt-7 flex items-center gap-5">
       <a
         href="https://github.com/emilyzyzhou"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="GitHub"
-        className="hover:scale-110 transition-transform duration-200"
+        className="transition-transform hover:scale-110"
+        style={{ color: 'var(--muted)' }}
+        onMouseEnter={(e) => (e.currentTarget.style.color = '#fff')}
+        onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--muted)')}
       >
-        <FaGithub size={28} className="text-[var(--hh-muted)] hover:text-[var(--hh-text)]" />
+        <FaGithub size={24} />
       </a>
 
-      {/* LinkedIn */}
       <a
         href="https://www.linkedin.com/in/emilyzyzhou/"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="LinkedIn"
-        className="hover:scale-110 transition-transform duration-200"
+        className="transition-transform hover:scale-110"
+        style={{ color: 'var(--muted)' }}
+        onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--cyan)')}
+        onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--muted)')}
       >
-        <FaLinkedin size={28} className="text-[var(--hh-muted)] hover:text-[var(--hh-text)]" />
+        <FaLinkedin size={24} />
       </a>
 
-      {/* Email (copy to clipboard) */}
       <button
         type="button"
-        onClick={copyEmail}
+        onClick={copy}
         aria-label="Copy email"
-        className="hover:scale-110 transition-transform duration-200"
-        title="Copy email"
+        className="transition-transform hover:scale-110"
+        style={{ color: 'var(--muted)', background: 'none', border: 'none', padding: 0 }}
+        onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--violet)')}
+        onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--muted)')}
       >
-        <FaEnvelope size={28} className="text-[var(--hh-muted)] hover:text-[var(--hh-accent)]" />
+        <FaEnvelope size={22} />
       </button>
 
-      {/* tiny toast */}
       {copied && (
         <span
-          className="text-xs px-2 py-1 rounded"
-          style={{ background: 'var(--hh-border)', color: 'var(--hh-text)' }}
+          className="text-xs px-2.5 py-1 rounded-full font-medium"
+          style={{ background: 'rgba(34,211,238,0.12)', color: 'var(--cyan)', border: '1px solid rgba(34,211,238,0.25)' }}
         >
           Copied!
         </span>

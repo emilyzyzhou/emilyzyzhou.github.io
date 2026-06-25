@@ -1,39 +1,34 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import { Syne, DM_Sans } from 'next/font/google';
+import type { Metadata } from 'next';
+import { Syne, DM_Sans, Geist_Mono } from 'next/font/google';
 import './globals.css';
+import NavBar from '@/components/NavBar';
+import StarField from '@/components/StarField';
 
-const syne = Syne({ subsets: ['latin'], weight: ['700','800'], variable: '--font-syne' });
-const dmSans = DM_Sans({ subsets: ['latin'], weight: ['400','500'], variable: '--font-dm-sans' });
+const syne    = Syne({ subsets: ['latin'], weight: ['700','800'], variable: '--font-syne' });
+const dmSans  = DM_Sans({ subsets: ['latin'], weight: ['400','500','600'], variable: '--font-dm-sans' });
+const mono    = Geist_Mono({ subsets: ['latin'], variable: '--font-geist-mono' });
 
 export const metadata: Metadata = {
   title: 'Emily Zhou — Portfolio',
-  description: 'About, resume, projects, and interests.',
-}
-import NavBar from '@/components/NavBar';
+  description: 'Full-Stack & AI Engineer · UVA CS May 2026',
+};
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-      <html lang="en" className={`${syne.variable} ${dmSans.variable}`}>
-        <body style={{fontFamily: 'var(--font-dm-sans)'}}>
-          <NavBar/>
-          <main className="max-w-5xl mx-auto px-4">{children}</main>
-          <footer className="py-10 text-center text-sm text-zinc-500">© {new Date().getFullYear()} Emily Zhou</footer>
-        </body>
-      </html>
+    <html lang="en" className={`${syne.variable} ${dmSans.variable} ${mono.variable}`}>
+      <body>
+        <StarField />
+        <div style={{ position: 'relative', zIndex: 1 }}>
+          <NavBar />
+          {children}
+          <footer
+            className="py-8 text-center text-xs"
+            style={{ color: 'var(--muted)', borderTop: '1px solid var(--border)' }}
+          >
+            © {new Date().getFullYear()} Emily Zhou · Built with Next.js
+          </footer>
+        </div>
+      </body>
+    </html>
   );
 }
